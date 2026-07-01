@@ -1,0 +1,49 @@
+name: Sync to Skills Repository
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+      - 'README.md'
+      - 'README_zh.md'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Target Repo
+        uses: actions/checkout@v4
+        with:
+          repository: hankunpeng/skills
+          token: ${{ secrets.SKILLS_REPO_TOKEN }}
+          path: target-repo
+
+      - name: Sync Files
+        run: |
+          mkdir -p target-repo/skills/conventional-commits
+          rsync -av --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='target-repo' \
+            --exclude='LICENSE' \
+            --exclude='README.md' \
+            --exclude='README_zh.md' \
+            ./ target-repo/skills/conventional-commits/
+
+      - name: Commit and Push
+        run: |
+          cd target-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add skills/conventional-commits
+          if ! git diff --cached --exit-code; then
+            git commit -m "chore: sync conventional-commits from source repository"
+            git push
+          else
+            echo "No changes to commit"
+          fi
