@@ -54,35 +54,45 @@
 
 ## 安装方法
 
-本仓库是一个兼容多个智能体（Agent）平台的 AI 智能体技能。
+本仓库是一个 AI 智能体（Agent）技能。您可以使用 `skills` CLI 方便地进行安装：
 
-### 方法 1：全局安装（适用于所有项目）
+### 方法 1：项目级安装（推荐）
 
-将本仓库克隆到您智能体平台的全局技能目录下，使其在每个项目中都可用：
-
-```bash
-cd ~/.agents/skills/
-git clone https://github.com/hankunpeng/conventional-commits.git
-```
-
-该技能将被**自动发现** — 无需额外配置。
-
-### 方法 2：项目级安装（推荐 — 仅适用于单个项目）
-
-克隆本仓库并将其链接到您项目的 `.agents/skills/` 目录中：
+在当前项目目录下安装该技能：
 
 ```bash
-# 克隆技能仓库
-cd ~/your_path
-git clone https://github.com/hankunpeng/conventional-commits.git
-
-# 创建符号链接（软链接）
-cd ~/your_project_root
-mkdir -p .agents/skills
-ln -s ~/your_path/conventional-commits .agents/skills/conventional-commits
+npx skills add hankunpeng/conventional-commits
 ```
 
-该技能将**仅针对当前项目自动发现**。
+### 方法 2：全局安装（适用于所有项目）
+
+全局安装该技能，使其在所有项目中均可使用：
+
+```bash
+npx skills add hankunpeng/conventional-commits -g
+```
+
+### 方法 3：手动安装
+
+如果您更愿意手动克隆安装：
+
+1. **全局安装**：克隆到全局技能目录下：
+   ```bash
+   cd ~/.agents/skills/
+   git clone https://github.com/hankunpeng/conventional-commits.git
+   ```
+
+2. **项目级安装**：克隆到本地并创建符号链接（软链接）：
+   ```bash
+   # 克隆技能仓库
+   cd ~/your_path
+   git clone https://github.com/hankunpeng/conventional-commits.git
+
+   # 创建符号链接
+   cd ~/your_project_root
+   mkdir -p .agents/skills
+   ln -s ~/your_path/conventional-commits .agents/skills/conventional-commits
+   ```
 
 ### 验证安装
 

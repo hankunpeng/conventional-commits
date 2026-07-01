@@ -54,35 +54,45 @@ Before you install and run the scripts, ensure your system meets the following p
 
 ## Installation
 
-This repository is an AI agent skill compatible with multiple agent platforms.
+This repository is an AI agent skill. You can install it easily using the `skills` CLI:
 
-### Method 1: Global installation (all projects)
+### Method 1: Project-level installation (recommended)
 
-Clone the repository under the global skills directory for your agent platform so that it's available in every project:
-
-```bash
-cd ~/.agents/skills/
-git clone https://github.com/hankunpeng/conventional-commits.git
-```
-
-The skill will be **automatically discovered** — no additional configuration needed.
-
-### Method 2: Project-level installation (recommended — single project)
-
-Clone the repository and link it into your project's `.agents/skills/` directory:
+Install the skill in your current project:
 
 ```bash
-# Clone the skill repository
-cd ~/your_path
-git clone https://github.com/hankunpeng/conventional-commits.git
-
-# Create a symbolic link (symlink)
-cd ~/your_project_root
-mkdir -p .agents/skills
-ln -s ~/your_path/conventional-commits .agents/skills/conventional-commits
+npx skills add hankunpeng/conventional-commits
 ```
 
-The skill will be **automatically discovered** for this project only.
+### Method 2: Global installation (all projects)
+
+Install the skill globally so it is available across all repositories:
+
+```bash
+npx skills add hankunpeng/conventional-commits -g
+```
+
+### Method 3: Manual installation
+
+If you prefer to install it manually:
+
+1. **Global**: Clone the repository under the global skills directory for your agent platform:
+   ```bash
+   cd ~/.agents/skills/
+   git clone https://github.com/hankunpeng/conventional-commits.git
+   ```
+
+2. **Project**: Clone it locally and symlink it to your project:
+   ```bash
+   # Clone the skill repository
+   cd ~/your_path
+   git clone https://github.com/hankunpeng/conventional-commits.git
+
+   # Create a symbolic link
+   cd ~/your_project_root
+   mkdir -p .agents/skills
+   ln -s ~/your_path/conventional-commits .agents/skills/conventional-commits
+   ```
 
 ### Verify installation
 
