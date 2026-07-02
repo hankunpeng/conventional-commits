@@ -61,7 +61,7 @@ This repository is an AI agent skill. You can install it easily using the `skill
 Install the skill in your current project:
 
 ```bash
-npx skills add hankunpeng/conventional-commits
+npx skills add hankunpeng/skills --skill conventional-commits
 ```
 
 ### Method 2: Global installation (all projects)
@@ -69,7 +69,7 @@ npx skills add hankunpeng/conventional-commits
 Install the skill globally so it is available across all repositories:
 
 ```bash
-npx skills add hankunpeng/conventional-commits -g
+npx skills add hankunpeng/skills --skill conventional-commits -g
 ```
 
 ### Method 3: Manual installation

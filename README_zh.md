@@ -61,7 +61,7 @@
 在当前项目目录下安装该技能：
 
 ```bash
-npx skills add hankunpeng/conventional-commits
+npx skills add hankunpeng/skills --skill conventional-commits
 ```
 
 ### 方法 2：全局安装（适用于所有项目）
@@ -69,7 +69,7 @@ npx skills add hankunpeng/conventional-commits
 全局安装该技能，使其在所有项目中均可使用：
 
 ```bash
-npx skills add hankunpeng/conventional-commits -g
+npx skills add hankunpeng/skills --skill conventional-commits -g
 ```
 
 ### 方法 3：手动安装
