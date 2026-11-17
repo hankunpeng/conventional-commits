@@ -28,10 +28,11 @@ Conventional Commits follow a structured layout to ensure consistency and readab
 
 ### Supported types
 
-The linter supports the following standard and common commit types:
+The linter accepts the following types. `init` is a custom type for initial repository or project setup; Conventional Commits allows projects to define additional types.
 
 | Type | Description |
 |------|-------------|
+| `init` | Initial setup of a repository or project (custom type) |
 | `feat` | A new feature |
 | `fix` | A bug fix |
 | `docs` | Documentation changes |
@@ -116,6 +117,9 @@ To validate a commit message against the specification, run the `commit-lint.sh`
 ~/your_path/conventional-commits/scripts/commit-lint.sh "feat(auth): add email verification"
 # ✔ Commit message style is valid!
 
+~/your_path/conventional-commits/scripts/commit-lint.sh "init: add initial project structure"
+# ✔ Commit message style is valid!
+
 ~/your_path/conventional-commits/scripts/commit-lint.sh "added new login page"
 # ✗ Invalid commit message format.
 ```
@@ -144,6 +148,10 @@ To create a semantic changelog from your git commit history, run the `generate-c
 # Changelog
 
 ## v1.1.0 (2026-06-30)
+
+### Initialization
+
+- add initial project structure (012abcd)
 
 ### Features
 
@@ -180,6 +188,7 @@ See [examples/commit-messages.md](examples/commit-messages.md) for a full collec
 **Quick valid examples:**
 
 ```
+init: add initial project structure
 feat: add dark mode toggle
 fix(parser): handle empty input without crash
 refactor(api)!: rename user endpoints

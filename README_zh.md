@@ -28,10 +28,11 @@
 
 ### 支持的类型
 
-检查器支持以下标准及常见的提交类型：
+检查器支持以下类型。其中，`init` 是本工具用于仓库或项目初始化的自定义类型；Conventional Commits 规范允许项目定义其他类型。
 
 | 类型 | 描述 |
 |------|-------------|
+| `init` | 仓库或项目初始化（自定义类型） |
 | `feat` | 新功能 |
 | `fix` | Bug 修复 |
 | `docs` | 文档变更 |
@@ -116,6 +117,9 @@ npx skills add hankunpeng/skills --skill conventional-commits -g
 ~/your_path/conventional-commits/scripts/commit-lint.sh "feat(auth): add email verification"
 # ✔ Commit message style is valid!
 
+~/your_path/conventional-commits/scripts/commit-lint.sh "init: add initial project structure"
+# ✔ Commit message style is valid!
+
 ~/your_path/conventional-commits/scripts/commit-lint.sh "added new login page"
 # ✗ Invalid commit message format.
 ```
@@ -144,6 +148,10 @@ npx skills add hankunpeng/skills --skill conventional-commits -g
 # Changelog
 
 ## v1.1.0 (2026-06-30)
+
+### Initialization
+
+- add initial project structure (012abcd)
 
 ### Features
 
@@ -180,6 +188,7 @@ conventional-commits/
 **快速有效示例：**
 
 ```
+init: add initial project structure
 feat: add dark mode toggle
 fix(parser): handle empty input without crash
 refactor(api)!: rename user endpoints
