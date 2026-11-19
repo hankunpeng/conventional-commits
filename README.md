@@ -55,14 +55,14 @@ Before you install and run the scripts, ensure your system meets the following p
 
 ## Installation
 
-This repository is an AI agent skill. You can install it easily using the `skills` CLI:
+This repository provides the `cc` agent skill. Install it with the `skills` CLI.
 
 ### Method 1: Project-level installation (recommended)
 
 Install the skill in your current project:
 
 ```bash
-npx skills add hankunpeng/skills --skill conventional-commits
+npx skills add hankunpeng/skills --skill cc
 ```
 
 ### Method 2: Global installation (all projects)
@@ -70,7 +70,7 @@ npx skills add hankunpeng/skills --skill conventional-commits
 Install the skill globally so it is available across all repositories:
 
 ```bash
-npx skills add hankunpeng/skills --skill conventional-commits -g
+npx skills add hankunpeng/skills --skill cc -g
 ```
 
 ### Method 3: Manual installation
@@ -80,7 +80,7 @@ If you prefer to install it manually:
 1. **Global**: Clone the repository under the global skills directory for your agent platform:
    ```bash
    cd ~/.agents/skills/
-   git clone https://github.com/hankunpeng/conventional-commits.git
+   git clone https://github.com/hankunpeng/conventional-commits.git cc
    ```
 
 2. **Project**: Clone it locally and symlink it to your project:
@@ -92,15 +92,15 @@ If you prefer to install it manually:
    # Create a symbolic link
    cd ~/your_project_root
    mkdir -p .agents/skills
-   ln -s ~/your_path/conventional-commits .agents/skills/conventional-commits
+   ln -s ~/your_path/conventional-commits .agents/skills/cc
    ```
 
 ### Verify installation
 
-After installation, ask the AI agent to lint a commit message to confirm the skill is working:
+After installation, invoke `$cc` in Codex to check a commit message.
 
 ```
-> lint this commit message: "feat(auth): add OAuth2 support"
+$cc Check the commit message "feat(auth): add OAuth2 support"
 ```
 
 If the skill is loaded correctly, it will use `scripts/commit-lint.sh` to validate the message.

@@ -25,7 +25,18 @@ jobs:
 
       - name: Sync Files
         run: |
-          mkdir -p target-repo/skills/conventional-commits
+          if [ -d target-repo/skills/conventional-commits ]; then
+            if [ -e target-repo/skills/cc ]; then
+              echo "Cannot migrate conventional-commits because skills/cc already exists." >&2
+              exit 1
+            fi
+            git -C target-repo mv -- skills/conventional-commits skills/cc
+            perl -pi -e 's/`conventional-commits`/`cc`/g; s/--skill conventional-commits(?=[\s`]|$)/--skill cc/g' \
+              target-repo/README.md target-repo/README_zh.md
+            git -C target-repo add -- README.md README_zh.md
+          fi
+
+          mkdir -p target-repo/skills/cc
           rsync -av --delete \
             --exclude='.git' \
             --exclude='.github' \
@@ -33,16 +44,16 @@ jobs:
             --exclude='LICENSE' \
             --exclude='README.md' \
             --exclude='README_zh.md' \
-            ./ target-repo/skills/conventional-commits/
+            ./ target-repo/skills/cc/
 
       - name: Commit and Push
         run: |
           cd target-repo
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add skills/conventional-commits
+          git add -- skills/cc
           if ! git diff --cached --exit-code; then
-            git commit -m "chore: sync conventional-commits from source repository"
+            git commit -m "chore: sync cc from source repository"
             git push
           else
             echo "No changes to commit"

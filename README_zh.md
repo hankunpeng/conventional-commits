@@ -55,14 +55,14 @@
 
 ## 安装方法
 
-本仓库是一个 AI 智能体（Agent）技能。您可以使用 `skills` CLI 方便地进行安装：
+本仓库提供 `cc` 技能，可以用 `skills` CLI 安装。
 
 ### 方法 1：项目级安装（推荐）
 
 在当前项目目录下安装该技能：
 
 ```bash
-npx skills add hankunpeng/skills --skill conventional-commits
+npx skills add hankunpeng/skills --skill cc
 ```
 
 ### 方法 2：全局安装（适用于所有项目）
@@ -70,7 +70,7 @@ npx skills add hankunpeng/skills --skill conventional-commits
 全局安装该技能，使其在所有项目中均可使用：
 
 ```bash
-npx skills add hankunpeng/skills --skill conventional-commits -g
+npx skills add hankunpeng/skills --skill cc -g
 ```
 
 ### 方法 3：手动安装
@@ -80,7 +80,7 @@ npx skills add hankunpeng/skills --skill conventional-commits -g
 1. **全局安装**：克隆到全局技能目录下：
    ```bash
    cd ~/.agents/skills/
-   git clone https://github.com/hankunpeng/conventional-commits.git
+   git clone https://github.com/hankunpeng/conventional-commits.git cc
    ```
 
 2. **项目级安装**：克隆到本地并创建符号链接（软链接）：
@@ -92,15 +92,15 @@ npx skills add hankunpeng/skills --skill conventional-commits -g
    # 创建符号链接
    cd ~/your_project_root
    mkdir -p .agents/skills
-   ln -s ~/your_path/conventional-commits .agents/skills/conventional-commits
+   ln -s ~/your_path/conventional-commits .agents/skills/cc
    ```
 
 ### 验证安装
 
-安装完成后，可以让 AI 智能体检查一条提交消息以确认技能是否正常工作：
+安装后，在 Codex 中调用 `$cc` 检查一条提交消息。
 
 ```
-> lint this commit message: "feat(auth): add OAuth2 support"
+$cc 检查提交消息 "feat(auth): add OAuth2 support"
 ```
 
 如果技能加载正确，它将使用 `scripts/commit-lint.sh` 来验证该消息。
